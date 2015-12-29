@@ -54,6 +54,12 @@
             this.AveIndTempLabel = new System.Windows.Forms.Label();
             this.HideButton = new System.Windows.Forms.Button();
             this.StatusGp = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.EMHeat = new System.Windows.Forms.CheckBox();
+            this.Cool2Address = new System.Windows.Forms.TextBox();
+            this.Cool2 = new System.Windows.Forms.CheckBox();
+            this.Heat2Address = new System.Windows.Forms.TextBox();
+            this.Heat2 = new System.Windows.Forms.CheckBox();
             this.FreshAdd = new System.Windows.Forms.TextBox();
             this.FreshAirFan = new System.Windows.Forms.CheckBox();
             this.HumidifierAddress = new System.Windows.Forms.TextBox();
@@ -66,13 +72,6 @@
             this.Heat = new System.Windows.Forms.CheckBox();
             this.CoolCompressor = new System.Windows.Forms.CheckBox();
             this.RefreshButton = new System.Windows.Forms.Button();
-            this.Sprinkler = new System.Windows.Forms.GroupBox();
-            this.Rain24Label = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.RainThresh = new System.Windows.Forms.TextBox();
-            this.SprinklerAddressLabel = new System.Windows.Forms.Label();
-            this.SprinklerAddress = new System.Windows.Forms.TextBox();
-            this.SprinklersBox = new System.Windows.Forms.CheckBox();
             this.SaveSet = new System.Windows.Forms.Button();
             this.Reload = new System.Windows.Forms.Button();
             this.BarnGroup = new System.Windows.Forms.GroupBox();
@@ -90,6 +89,12 @@
             this.BarnCool = new System.Windows.Forms.CheckBox();
             this.UpdateLabel = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.RainThresh = new System.Windows.Forms.TextBox();
+            this.SprinklerAddress = new System.Windows.Forms.TextBox();
+            this.FireplaceAddress = new System.Windows.Forms.TextBox();
+            this.FireplaceFanAddress = new System.Windows.Forms.TextBox();
+            this.FireSensor = new System.Windows.Forms.ComboBox();
+            this.FireCommandOnce = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,6 +110,27 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.Conditions = new System.Windows.Forms.TabPage();
+            this.HVAC = new System.Windows.Forms.TabPage();
+            this.irrigation = new System.Windows.Forms.TabPage();
+            this.Sprinkler = new System.Windows.Forms.GroupBox();
+            this.Rain24Label = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.SprinklerAddressLabel = new System.Windows.Forms.Label();
+            this.SprinklersBox = new System.Windows.Forms.CheckBox();
+            this.Other = new System.Windows.Forms.TabPage();
+            this.FireplaceGroup = new System.Windows.Forms.GroupBox();
+            this.FireOutdoorMin = new System.Windows.Forms.NumericUpDown();
+            this.label20 = new System.Windows.Forms.Label();
+            this.FireHysteresis = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.FireDesiredMin = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
+            this.FireplaceFan = new System.Windows.Forms.CheckBox();
+            this.Fireplace = new System.Windows.Forms.CheckBox();
+            this.FireplaceFanCheckbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.CoolingDesiredMax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeatDesiredMin)).BeginInit();
             this.DesiredConditionsGp.SuspendLayout();
@@ -113,18 +139,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.MaxSplit)).BeginInit();
             this.ActCondGroup.SuspendLayout();
             this.StatusGp.SuspendLayout();
-            this.Sprinkler.SuspendLayout();
             this.BarnGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BarnDesMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarnDesMax)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.Conditions.SuspendLayout();
+            this.HVAC.SuspendLayout();
+            this.irrigation.SuspendLayout();
+            this.Sprinkler.SuspendLayout();
+            this.Other.SuspendLayout();
+            this.FireplaceGroup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FireOutdoorMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FireHysteresis)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FireDesiredMin)).BeginInit();
             this.SuspendLayout();
             // 
             // CoolingDesiredMax
             // 
             this.helpProvider1.SetHelpKeyword(this.CoolingDesiredMax, "HVAC Cooling");
             this.helpProvider1.SetHelpString(this.CoolingDesiredMax, "Use this control to set the temperature threshold for engaging your cooling syste" +
-                    "m X10 device.");
+        "m X10 device.");
             this.CoolingDesiredMax.Location = new System.Drawing.Point(111, 35);
             this.CoolingDesiredMax.Minimum = new decimal(new int[] {
             65,
@@ -202,9 +237,9 @@
             this.DesiredConditionsGp.Controls.Add(this.HeatDesiredMin);
             this.DesiredConditionsGp.Controls.Add(this.CoolingDesiredMax);
             this.DesiredConditionsGp.Controls.Add(this.label3);
-            this.DesiredConditionsGp.Location = new System.Drawing.Point(3, 47);
+            this.DesiredConditionsGp.Location = new System.Drawing.Point(6, 6);
             this.DesiredConditionsGp.Name = "DesiredConditionsGp";
-            this.DesiredConditionsGp.Size = new System.Drawing.Size(293, 140);
+            this.DesiredConditionsGp.Size = new System.Drawing.Size(293, 292);
             this.DesiredConditionsGp.TabIndex = 5;
             this.DesiredConditionsGp.TabStop = false;
             this.DesiredConditionsGp.Text = "Desired HVAC Conditions";
@@ -232,7 +267,7 @@
             // 
             this.helpProvider1.SetHelpKeyword(this.MaxInDP, "HVAC Dew Point");
             this.helpProvider1.SetHelpString(this.MaxInDP, "This sets the maximum dew point for insode the building.  This is used to prevent" +
-                    " the fresh air fan from engaging when the outside dew point is too high.");
+        " the fresh air fan from engaging when the outside dew point is too high.");
             this.MaxInDP.Location = new System.Drawing.Point(239, 113);
             this.MaxInDP.Maximum = new decimal(new int[] {
             90,
@@ -298,7 +333,7 @@
             this.UseAppTemp.CheckState = System.Windows.Forms.CheckState.Checked;
             this.helpProvider1.SetHelpKeyword(this.UseAppTemp, "HVAC apparent temp");
             this.helpProvider1.SetHelpString(this.UseAppTemp, "When this box is checked, the controls in this group will use the apparent temper" +
-                    "ature to control to, rather than the actual temperature.");
+        "ature to control to, rather than the actual temperature.");
             this.UseAppTemp.Location = new System.Drawing.Point(37, 15);
             this.UseAppTemp.Name = "UseAppTemp";
             this.helpProvider1.SetShowHelp(this.UseAppTemp, true);
@@ -356,7 +391,7 @@
             this.ActCondGroup.Controls.Add(this.label1);
             this.ActCondGroup.Controls.Add(this.IndoorTemp1Label);
             this.ActCondGroup.Controls.Add(this.AveIndTempLabel);
-            this.ActCondGroup.Location = new System.Drawing.Point(302, 68);
+            this.ActCondGroup.Location = new System.Drawing.Point(6, 6);
             this.ActCondGroup.Name = "ActCondGroup";
             this.ActCondGroup.Size = new System.Drawing.Size(562, 342);
             this.ActCondGroup.TabIndex = 6;
@@ -454,7 +489,7 @@
             // HideButton
             // 
             this.HideButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.HideButton.Location = new System.Drawing.Point(824, 45);
+            this.HideButton.Location = new System.Drawing.Point(488, 3);
             this.HideButton.Name = "HideButton";
             this.HideButton.Size = new System.Drawing.Size(40, 23);
             this.HideButton.TabIndex = 7;
@@ -464,6 +499,12 @@
             // 
             // StatusGp
             // 
+            this.StatusGp.Controls.Add(this.textBox1);
+            this.StatusGp.Controls.Add(this.EMHeat);
+            this.StatusGp.Controls.Add(this.Cool2Address);
+            this.StatusGp.Controls.Add(this.Cool2);
+            this.StatusGp.Controls.Add(this.Heat2Address);
+            this.StatusGp.Controls.Add(this.Heat2);
             this.StatusGp.Controls.Add(this.FreshAdd);
             this.StatusGp.Controls.Add(this.FreshAirFan);
             this.StatusGp.Controls.Add(this.HumidifierAddress);
@@ -475,18 +516,81 @@
             this.StatusGp.Controls.Add(this.MixFan);
             this.StatusGp.Controls.Add(this.Heat);
             this.StatusGp.Controls.Add(this.CoolCompressor);
-            this.StatusGp.Location = new System.Drawing.Point(3, 198);
+            this.StatusGp.Location = new System.Drawing.Point(354, 6);
             this.StatusGp.Name = "StatusGp";
-            this.StatusGp.Size = new System.Drawing.Size(293, 150);
+            this.StatusGp.Size = new System.Drawing.Size(392, 292);
             this.StatusGp.TabIndex = 8;
             this.StatusGp.TabStop = false;
             this.StatusGp.Text = "HVAC Control";
+            // 
+            // textBox1
+            // 
+            this.helpProvider1.SetHelpKeyword(this.textBox1, "HVAC Heating ON");
+            this.helpProvider1.SetHelpString(this.textBox1, resources.GetString("textBox1.HelpString"));
+            this.textBox1.Location = new System.Drawing.Point(116, 96);
+            this.textBox1.MaxLength = 3;
+            this.textBox1.Name = "textBox1";
+            this.helpProvider1.SetShowHelp(this.textBox1, true);
+            this.textBox1.Size = new System.Drawing.Size(30, 20);
+            this.textBox1.TabIndex = 20;
+            // 
+            // EMHeat
+            // 
+            this.EMHeat.AutoSize = true;
+            this.EMHeat.Location = new System.Drawing.Point(9, 98);
+            this.EMHeat.Name = "EMHeat";
+            this.EMHeat.Size = new System.Drawing.Size(105, 17);
+            this.EMHeat.TabIndex = 19;
+            this.EMHeat.Text = "Emergency Heat";
+            this.EMHeat.UseVisualStyleBackColor = true;
+            // 
+            // Cool2Address
+            // 
+            this.helpProvider1.SetHelpKeyword(this.Cool2Address, "HVAC Cooling ON");
+            this.helpProvider1.SetHelpString(this.Cool2Address, resources.GetString("Cool2Address.HelpString"));
+            this.Cool2Address.Location = new System.Drawing.Point(273, 30);
+            this.Cool2Address.MaxLength = 3;
+            this.Cool2Address.Name = "Cool2Address";
+            this.helpProvider1.SetShowHelp(this.Cool2Address, true);
+            this.Cool2Address.Size = new System.Drawing.Size(30, 20);
+            this.Cool2Address.TabIndex = 18;
+            // 
+            // Cool2
+            // 
+            this.Cool2.AutoSize = true;
+            this.Cool2.Location = new System.Drawing.Point(174, 32);
+            this.Cool2.Name = "Cool2";
+            this.Cool2.Size = new System.Drawing.Size(101, 17);
+            this.Cool2.TabIndex = 17;
+            this.Cool2.Text = "Stage 2 Cooling";
+            this.Cool2.UseVisualStyleBackColor = true;
+            // 
+            // Heat2Address
+            // 
+            this.helpProvider1.SetHelpKeyword(this.Heat2Address, "HVAC Heating ON");
+            this.helpProvider1.SetHelpString(this.Heat2Address, resources.GetString("Heat2Address.HelpString"));
+            this.Heat2Address.Location = new System.Drawing.Point(273, 76);
+            this.Heat2Address.MaxLength = 3;
+            this.Heat2Address.Name = "Heat2Address";
+            this.helpProvider1.SetShowHelp(this.Heat2Address, true);
+            this.Heat2Address.Size = new System.Drawing.Size(30, 20);
+            this.Heat2Address.TabIndex = 16;
+            // 
+            // Heat2
+            // 
+            this.Heat2.AutoSize = true;
+            this.Heat2.Location = new System.Drawing.Point(174, 78);
+            this.Heat2.Name = "Heat2";
+            this.Heat2.Size = new System.Drawing.Size(103, 17);
+            this.Heat2.TabIndex = 15;
+            this.Heat2.Text = "Stage 2 Heating";
+            this.Heat2.UseVisualStyleBackColor = true;
             // 
             // FreshAdd
             // 
             this.helpProvider1.SetHelpKeyword(this.FreshAdd, "HVAC Fresh Air");
             this.helpProvider1.SetHelpString(this.FreshAdd, resources.GetString("FreshAdd.HelpString"));
-            this.FreshAdd.Location = new System.Drawing.Point(108, 122);
+            this.FreshAdd.Location = new System.Drawing.Point(116, 140);
             this.FreshAdd.MaxLength = 3;
             this.FreshAdd.Name = "FreshAdd";
             this.helpProvider1.SetShowHelp(this.FreshAdd, true);
@@ -496,11 +600,11 @@
             // FreshAirFan
             // 
             this.FreshAirFan.AutoSize = true;
-            this.FreshAirFan.Location = new System.Drawing.Point(9, 124);
+            this.FreshAirFan.Location = new System.Drawing.Point(9, 142);
             this.FreshAirFan.Name = "FreshAirFan";
-            this.FreshAirFan.Size = new System.Drawing.Size(86, 17);
+            this.FreshAirFan.Size = new System.Drawing.Size(67, 17);
             this.FreshAirFan.TabIndex = 13;
-            this.FreshAirFan.Text = "Fresh Air ON";
+            this.FreshAirFan.Text = "Fresh Air";
             this.FreshAirFan.UseVisualStyleBackColor = true;
             this.FreshAirFan.CheckedChanged += new System.EventHandler(this.FreshAirFan_CheckedChanged);
             // 
@@ -508,7 +612,7 @@
             // 
             this.helpProvider1.SetHelpKeyword(this.HumidifierAddress, "HVAC Humidifier ON");
             this.helpProvider1.SetHelpString(this.HumidifierAddress, resources.GetString("HumidifierAddress.HelpString"));
-            this.HumidifierAddress.Location = new System.Drawing.Point(108, 99);
+            this.HumidifierAddress.Location = new System.Drawing.Point(116, 118);
             this.HumidifierAddress.MaxLength = 3;
             this.HumidifierAddress.Name = "HumidifierAddress";
             this.helpProvider1.SetShowHelp(this.HumidifierAddress, true);
@@ -518,11 +622,11 @@
             // HumidifierCheck
             // 
             this.HumidifierCheck.AutoSize = true;
-            this.HumidifierCheck.Location = new System.Drawing.Point(9, 101);
+            this.HumidifierCheck.Location = new System.Drawing.Point(9, 120);
             this.HumidifierCheck.Name = "HumidifierCheck";
-            this.HumidifierCheck.Size = new System.Drawing.Size(91, 17);
+            this.HumidifierCheck.Size = new System.Drawing.Size(72, 17);
             this.HumidifierCheck.TabIndex = 10;
-            this.HumidifierCheck.Text = "Humidifier ON";
+            this.HumidifierCheck.Text = "Humidifier";
             this.HumidifierCheck.UseVisualStyleBackColor = true;
             this.HumidifierCheck.CheckedChanged += new System.EventHandler(this.HumidifierCheck_CheckedChanged);
             // 
@@ -539,7 +643,7 @@
             // 
             this.helpProvider1.SetHelpKeyword(this.CoolAddress, "HVAC Cooling ON");
             this.helpProvider1.SetHelpString(this.CoolAddress, resources.GetString("CoolAddress.HelpString"));
-            this.CoolAddress.Location = new System.Drawing.Point(108, 30);
+            this.CoolAddress.Location = new System.Drawing.Point(116, 30);
             this.CoolAddress.MaxLength = 3;
             this.CoolAddress.Name = "CoolAddress";
             this.helpProvider1.SetShowHelp(this.CoolAddress, true);
@@ -550,7 +654,7 @@
             // 
             this.helpProvider1.SetHelpKeyword(this.HeatAddress, "HVAC Heating ON");
             this.helpProvider1.SetHelpString(this.HeatAddress, resources.GetString("HeatAddress.HelpString"));
-            this.HeatAddress.Location = new System.Drawing.Point(108, 76);
+            this.HeatAddress.Location = new System.Drawing.Point(116, 74);
             this.HeatAddress.MaxLength = 3;
             this.HeatAddress.Name = "HeatAddress";
             this.helpProvider1.SetShowHelp(this.HeatAddress, true);
@@ -561,33 +665,32 @@
             // 
             this.helpProvider1.SetHelpKeyword(this.FanAddress, "HVAC Fan ON");
             this.helpProvider1.SetHelpString(this.FanAddress, resources.GetString("FanAddress.HelpString"));
-            this.FanAddress.Location = new System.Drawing.Point(108, 53);
+            this.FanAddress.Location = new System.Drawing.Point(116, 52);
             this.FanAddress.MaxLength = 3;
             this.FanAddress.Name = "FanAddress";
             this.helpProvider1.SetShowHelp(this.FanAddress, true);
             this.FanAddress.Size = new System.Drawing.Size(30, 20);
             this.FanAddress.TabIndex = 4;
-            this.FanAddress.Text = "a2";
             // 
             // MixFan
             // 
             this.MixFan.AutoSize = true;
-            this.MixFan.Location = new System.Drawing.Point(9, 55);
+            this.MixFan.Location = new System.Drawing.Point(9, 54);
             this.MixFan.Name = "MixFan";
-            this.MixFan.Size = new System.Drawing.Size(85, 17);
+            this.MixFan.Size = new System.Drawing.Size(66, 17);
             this.MixFan.TabIndex = 3;
-            this.MixFan.Text = "Mix Fan  ON";
+            this.MixFan.Text = "Mix Fan ";
             this.MixFan.UseVisualStyleBackColor = true;
             this.MixFan.CheckedChanged += new System.EventHandler(this.MixFan_CheckedChanged);
             // 
             // Heat
             // 
             this.Heat.AutoSize = true;
-            this.Heat.Location = new System.Drawing.Point(9, 78);
+            this.Heat.Location = new System.Drawing.Point(9, 76);
             this.Heat.Name = "Heat";
-            this.Heat.Size = new System.Drawing.Size(82, 17);
+            this.Heat.Size = new System.Drawing.Size(63, 17);
             this.Heat.TabIndex = 2;
-            this.Heat.Text = "Heating ON";
+            this.Heat.Text = "Heating";
             this.Heat.UseVisualStyleBackColor = true;
             this.Heat.CheckedChanged += new System.EventHandler(this.Heat_CheckedChanged);
             // 
@@ -596,15 +699,15 @@
             this.CoolCompressor.AutoSize = true;
             this.CoolCompressor.Location = new System.Drawing.Point(9, 32);
             this.CoolCompressor.Name = "CoolCompressor";
-            this.CoolCompressor.Size = new System.Drawing.Size(80, 17);
+            this.CoolCompressor.Size = new System.Drawing.Size(61, 17);
             this.CoolCompressor.TabIndex = 0;
-            this.CoolCompressor.Text = "Cooling ON";
+            this.CoolCompressor.Text = "Cooling";
             this.CoolCompressor.UseVisualStyleBackColor = true;
             this.CoolCompressor.CheckedChanged += new System.EventHandler(this.CoolCompressor_CheckedChanged);
             // 
             // RefreshButton
             // 
-            this.RefreshButton.Location = new System.Drawing.Point(764, 45);
+            this.RefreshButton.Location = new System.Drawing.Point(428, 3);
             this.RefreshButton.Name = "RefreshButton";
             this.RefreshButton.Size = new System.Drawing.Size(54, 23);
             this.RefreshButton.TabIndex = 9;
@@ -612,85 +715,9 @@
             this.RefreshButton.UseVisualStyleBackColor = true;
             this.RefreshButton.Click += new System.EventHandler(this.TStat_TextChanged);
             // 
-            // Sprinkler
-            // 
-            this.Sprinkler.Controls.Add(this.Rain24Label);
-            this.Sprinkler.Controls.Add(this.label7);
-            this.Sprinkler.Controls.Add(this.RainThresh);
-            this.Sprinkler.Controls.Add(this.SprinklerAddressLabel);
-            this.Sprinkler.Controls.Add(this.SprinklerAddress);
-            this.Sprinkler.Controls.Add(this.SprinklersBox);
-            this.Sprinkler.Location = new System.Drawing.Point(3, 354);
-            this.Sprinkler.Name = "Sprinkler";
-            this.Sprinkler.Size = new System.Drawing.Size(293, 150);
-            this.Sprinkler.TabIndex = 10;
-            this.Sprinkler.TabStop = false;
-            this.Sprinkler.Text = "Sprinkler Control";
-            // 
-            // Rain24Label
-            // 
-            this.Rain24Label.AutoSize = true;
-            this.Rain24Label.Location = new System.Drawing.Point(137, 43);
-            this.Rain24Label.Name = "Rain24Label";
-            this.Rain24Label.Size = new System.Drawing.Size(70, 13);
-            this.Rain24Label.TabIndex = 5;
-            this.Rain24Label.Text = "24 Hour Rain";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(137, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Rain Threshold (in)";
-            // 
-            // RainThresh
-            // 
-            this.helpProvider1.SetHelpKeyword(this.RainThresh, "Rain threshold");
-            this.helpProvider1.SetHelpString(this.RainThresh, resources.GetString("RainThresh.HelpString"));
-            this.RainThresh.Location = new System.Drawing.Point(239, 16);
-            this.RainThresh.Name = "RainThresh";
-            this.helpProvider1.SetShowHelp(this.RainThresh, true);
-            this.RainThresh.Size = new System.Drawing.Size(36, 20);
-            this.RainThresh.TabIndex = 3;
-            this.RainThresh.Text = "0.15";
-            // 
-            // SprinklerAddressLabel
-            // 
-            this.SprinklerAddressLabel.AutoSize = true;
-            this.SprinklerAddressLabel.Location = new System.Drawing.Point(38, 46);
-            this.SprinklerAddressLabel.Name = "SprinklerAddressLabel";
-            this.SprinklerAddressLabel.Size = new System.Drawing.Size(67, 13);
-            this.SprinklerAddressLabel.TabIndex = 2;
-            this.SprinklerAddressLabel.Text = "X10 Address";
-            // 
-            // SprinklerAddress
-            // 
-            this.helpProvider1.SetHelpKeyword(this.SprinklerAddress, "Sprinlers enable");
-            this.helpProvider1.SetHelpString(this.SprinklerAddress, resources.GetString("SprinklerAddress.HelpString"));
-            this.SprinklerAddress.Location = new System.Drawing.Point(6, 43);
-            this.SprinklerAddress.MaxLength = 3;
-            this.SprinklerAddress.Name = "SprinklerAddress";
-            this.helpProvider1.SetShowHelp(this.SprinklerAddress, true);
-            this.SprinklerAddress.Size = new System.Drawing.Size(30, 20);
-            this.SprinklerAddress.TabIndex = 1;
-            this.SprinklerAddress.Text = "a1";
-            // 
-            // SprinklersBox
-            // 
-            this.SprinklersBox.AutoSize = true;
-            this.SprinklersBox.Location = new System.Drawing.Point(6, 19);
-            this.SprinklersBox.Name = "SprinklersBox";
-            this.SprinklersBox.Size = new System.Drawing.Size(114, 17);
-            this.SprinklersBox.TabIndex = 0;
-            this.SprinklersBox.Text = "Sprinklers Enabled";
-            this.SprinklersBox.UseVisualStyleBackColor = true;
-            this.SprinklersBox.CheckedChanged += new System.EventHandler(this.SprinklersBox_CheckedChanged);
-            // 
             // SaveSet
             // 
-            this.SaveSet.Location = new System.Drawing.Point(572, 47);
+            this.SaveSet.Location = new System.Drawing.Point(236, 3);
             this.SaveSet.Name = "SaveSet";
             this.SaveSet.Size = new System.Drawing.Size(88, 21);
             this.SaveSet.TabIndex = 11;
@@ -700,7 +727,7 @@
             // 
             // Reload
             // 
-            this.Reload.Location = new System.Drawing.Point(666, 46);
+            this.Reload.Location = new System.Drawing.Point(330, 2);
             this.Reload.Name = "Reload";
             this.Reload.Size = new System.Drawing.Size(92, 22);
             this.Reload.TabIndex = 12;
@@ -710,6 +737,7 @@
             // 
             // BarnGroup
             // 
+            this.BarnGroup.BackColor = System.Drawing.Color.PaleGreen;
             this.BarnGroup.Controls.Add(this.BarnUseAppTemp);
             this.BarnGroup.Controls.Add(this.label12);
             this.BarnGroup.Controls.Add(this.BarnSensor);
@@ -722,9 +750,9 @@
             this.BarnGroup.Controls.Add(this.BarnDesMax);
             this.BarnGroup.Controls.Add(this.BarnCoolAdd);
             this.BarnGroup.Controls.Add(this.BarnCool);
-            this.BarnGroup.Location = new System.Drawing.Point(302, 416);
+            this.BarnGroup.Location = new System.Drawing.Point(5, 3);
             this.BarnGroup.Name = "BarnGroup";
-            this.BarnGroup.Size = new System.Drawing.Size(562, 88);
+            this.BarnGroup.Size = new System.Drawing.Size(779, 88);
             this.BarnGroup.TabIndex = 13;
             this.BarnGroup.TabStop = false;
             this.BarnGroup.Text = "Barn Control";
@@ -801,7 +829,7 @@
             // BarnHeat
             // 
             this.BarnHeat.AutoSize = true;
-            this.BarnHeat.Location = new System.Drawing.Point(17, 58);
+            this.BarnHeat.Location = new System.Drawing.Point(19, 58);
             this.BarnHeat.Name = "BarnHeat";
             this.BarnHeat.Size = new System.Drawing.Size(82, 17);
             this.BarnHeat.TabIndex = 11;
@@ -864,11 +892,76 @@
             // UpdateLabel
             // 
             this.UpdateLabel.AutoSize = true;
-            this.UpdateLabel.Location = new System.Drawing.Point(311, 47);
+            this.UpdateLabel.Location = new System.Drawing.Point(574, 15);
             this.UpdateLabel.Name = "UpdateLabel";
             this.UpdateLabel.Size = new System.Drawing.Size(67, 13);
             this.UpdateLabel.TabIndex = 14;
             this.UpdateLabel.Text = "Initializing.....";
+            // 
+            // RainThresh
+            // 
+            this.helpProvider1.SetHelpKeyword(this.RainThresh, "Rain threshold");
+            this.helpProvider1.SetHelpString(this.RainThresh, resources.GetString("RainThresh.HelpString"));
+            this.RainThresh.Location = new System.Drawing.Point(291, 35);
+            this.RainThresh.Name = "RainThresh";
+            this.helpProvider1.SetShowHelp(this.RainThresh, true);
+            this.RainThresh.Size = new System.Drawing.Size(36, 20);
+            this.RainThresh.TabIndex = 3;
+            this.RainThresh.Text = "0.15";
+            // 
+            // SprinklerAddress
+            // 
+            this.helpProvider1.SetHelpKeyword(this.SprinklerAddress, "Sprinlers enable");
+            this.helpProvider1.SetHelpString(this.SprinklerAddress, resources.GetString("SprinklerAddress.HelpString"));
+            this.SprinklerAddress.Location = new System.Drawing.Point(140, 36);
+            this.SprinklerAddress.MaxLength = 3;
+            this.SprinklerAddress.Name = "SprinklerAddress";
+            this.helpProvider1.SetShowHelp(this.SprinklerAddress, true);
+            this.SprinklerAddress.Size = new System.Drawing.Size(30, 20);
+            this.SprinklerAddress.TabIndex = 1;
+            // 
+            // FireplaceAddress
+            // 
+            this.helpProvider1.SetHelpKeyword(this.FireplaceAddress, "Barn heating");
+            this.helpProvider1.SetHelpString(this.FireplaceAddress, resources.GetString("FireplaceAddress.HelpString"));
+            this.FireplaceAddress.Location = new System.Drawing.Point(111, 19);
+            this.FireplaceAddress.Name = "FireplaceAddress";
+            this.helpProvider1.SetShowHelp(this.FireplaceAddress, true);
+            this.FireplaceAddress.Size = new System.Drawing.Size(27, 20);
+            this.FireplaceAddress.TabIndex = 13;
+            // 
+            // FireplaceFanAddress
+            // 
+            this.helpProvider1.SetHelpKeyword(this.FireplaceFanAddress, "Barn heating");
+            this.helpProvider1.SetHelpString(this.FireplaceFanAddress, resources.GetString("FireplaceFanAddress.HelpString"));
+            this.FireplaceFanAddress.Location = new System.Drawing.Point(111, 47);
+            this.FireplaceFanAddress.Name = "FireplaceFanAddress";
+            this.helpProvider1.SetShowHelp(this.FireplaceFanAddress, true);
+            this.FireplaceFanAddress.Size = new System.Drawing.Size(27, 20);
+            this.FireplaceFanAddress.TabIndex = 15;
+            // 
+            // FireSensor
+            // 
+            this.FireSensor.FormattingEnabled = true;
+            this.helpProvider1.SetHelpString(this.FireSensor, "This is the sensor used to determine outdoor temperature for fireplace control.");
+            this.FireSensor.Location = new System.Drawing.Point(402, 69);
+            this.FireSensor.Name = "FireSensor";
+            this.helpProvider1.SetShowHelp(this.FireSensor, true);
+            this.FireSensor.Size = new System.Drawing.Size(240, 21);
+            this.FireSensor.TabIndex = 18;
+            // 
+            // FireCommandOnce
+            // 
+            this.FireCommandOnce.AutoSize = true;
+            this.helpProvider1.SetHelpString(this.FireCommandOnce, "Don\'t check status each loop.  This allows other contorls to also manage the fire" +
+        ".");
+            this.FireCommandOnce.Location = new System.Drawing.Point(19, 73);
+            this.FireCommandOnce.Name = "FireCommandOnce";
+            this.helpProvider1.SetShowHelp(this.FireCommandOnce, true);
+            this.FireCommandOnce.Size = new System.Drawing.Size(160, 17);
+            this.FireCommandOnce.TabIndex = 22;
+            this.FireCommandOnce.Text = "Send commands only once?";
+            this.FireCommandOnce.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -888,7 +981,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(872, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(804, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -993,6 +1086,267 @@
             this.saveFileDialog1.DefaultExt = "csv";
             this.saveFileDialog1.FileName = "HomeControlLog.csv";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.Conditions);
+            this.tabControl1.Controls.Add(this.HVAC);
+            this.tabControl1.Controls.Add(this.irrigation);
+            this.tabControl1.Controls.Add(this.Other);
+            this.tabControl1.Location = new System.Drawing.Point(3, 27);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(795, 477);
+            this.tabControl1.TabIndex = 17;
+            // 
+            // Conditions
+            // 
+            this.Conditions.BackColor = System.Drawing.Color.Beige;
+            this.Conditions.Controls.Add(this.ActCondGroup);
+            this.Conditions.Controls.Add(this.UpdateLabel);
+            this.Conditions.Location = new System.Drawing.Point(4, 22);
+            this.Conditions.Name = "Conditions";
+            this.Conditions.Padding = new System.Windows.Forms.Padding(3);
+            this.Conditions.Size = new System.Drawing.Size(787, 451);
+            this.Conditions.TabIndex = 0;
+            this.Conditions.Text = "Conditions";
+            // 
+            // HVAC
+            // 
+            this.HVAC.BackColor = System.Drawing.Color.LightGray;
+            this.HVAC.Controls.Add(this.DesiredConditionsGp);
+            this.HVAC.Controls.Add(this.StatusGp);
+            this.HVAC.Location = new System.Drawing.Point(4, 22);
+            this.HVAC.Name = "HVAC";
+            this.HVAC.Padding = new System.Windows.Forms.Padding(3);
+            this.HVAC.Size = new System.Drawing.Size(787, 451);
+            this.HVAC.TabIndex = 1;
+            this.HVAC.Text = "HVAC";
+            // 
+            // irrigation
+            // 
+            this.irrigation.BackColor = System.Drawing.Color.PaleGreen;
+            this.irrigation.Controls.Add(this.Sprinkler);
+            this.irrigation.Location = new System.Drawing.Point(4, 22);
+            this.irrigation.Name = "irrigation";
+            this.irrigation.Size = new System.Drawing.Size(787, 451);
+            this.irrigation.TabIndex = 3;
+            this.irrigation.Text = "Irrigation";
+            // 
+            // Sprinkler
+            // 
+            this.Sprinkler.Controls.Add(this.Rain24Label);
+            this.Sprinkler.Controls.Add(this.label7);
+            this.Sprinkler.Controls.Add(this.RainThresh);
+            this.Sprinkler.Controls.Add(this.SprinklerAddressLabel);
+            this.Sprinkler.Controls.Add(this.SprinklerAddress);
+            this.Sprinkler.Controls.Add(this.SprinklersBox);
+            this.Sprinkler.Location = new System.Drawing.Point(3, 3);
+            this.Sprinkler.Name = "Sprinkler";
+            this.Sprinkler.Size = new System.Drawing.Size(780, 445);
+            this.Sprinkler.TabIndex = 11;
+            this.Sprinkler.TabStop = false;
+            this.Sprinkler.Text = "Sprinkler Control";
+            // 
+            // Rain24Label
+            // 
+            this.Rain24Label.AutoSize = true;
+            this.Rain24Label.Location = new System.Drawing.Point(344, 39);
+            this.Rain24Label.Name = "Rain24Label";
+            this.Rain24Label.Size = new System.Drawing.Size(70, 13);
+            this.Rain24Label.TabIndex = 5;
+            this.Rain24Label.Text = "24 Hour Rain";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(189, 39);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Rain Threshold (in)";
+            // 
+            // SprinklerAddressLabel
+            // 
+            this.SprinklerAddressLabel.AutoSize = true;
+            this.SprinklerAddressLabel.Location = new System.Drawing.Point(137, 20);
+            this.SprinklerAddressLabel.Name = "SprinklerAddressLabel";
+            this.SprinklerAddressLabel.Size = new System.Drawing.Size(67, 13);
+            this.SprinklerAddressLabel.TabIndex = 2;
+            this.SprinklerAddressLabel.Text = "X10 Address";
+            // 
+            // SprinklersBox
+            // 
+            this.SprinklersBox.AutoSize = true;
+            this.SprinklersBox.Location = new System.Drawing.Point(6, 37);
+            this.SprinklersBox.Name = "SprinklersBox";
+            this.SprinklersBox.Size = new System.Drawing.Size(114, 17);
+            this.SprinklersBox.TabIndex = 0;
+            this.SprinklersBox.Text = "Sprinklers Enabled";
+            this.SprinklersBox.UseVisualStyleBackColor = true;
+            // 
+            // Other
+            // 
+            this.Other.BackColor = System.Drawing.Color.Gainsboro;
+            this.Other.Controls.Add(this.FireplaceGroup);
+            this.Other.Controls.Add(this.BarnGroup);
+            this.Other.Location = new System.Drawing.Point(4, 22);
+            this.Other.Name = "Other";
+            this.Other.Size = new System.Drawing.Size(787, 451);
+            this.Other.TabIndex = 2;
+            this.Other.Text = "Other";
+            // 
+            // FireplaceGroup
+            // 
+            this.FireplaceGroup.BackColor = System.Drawing.Color.Tan;
+            this.FireplaceGroup.Controls.Add(this.FireplaceFanCheckbox);
+            this.FireplaceGroup.Controls.Add(this.FireOutdoorMin);
+            this.FireplaceGroup.Controls.Add(this.label20);
+            this.FireplaceGroup.Controls.Add(this.FireCommandOnce);
+            this.FireplaceGroup.Controls.Add(this.FireHysteresis);
+            this.FireplaceGroup.Controls.Add(this.label19);
+            this.FireplaceGroup.Controls.Add(this.label18);
+            this.FireplaceGroup.Controls.Add(this.FireSensor);
+            this.FireplaceGroup.Controls.Add(this.FireDesiredMin);
+            this.FireplaceGroup.Controls.Add(this.label17);
+            this.FireplaceGroup.Controls.Add(this.FireplaceFanAddress);
+            this.FireplaceGroup.Controls.Add(this.FireplaceFan);
+            this.FireplaceGroup.Controls.Add(this.FireplaceAddress);
+            this.FireplaceGroup.Controls.Add(this.Fireplace);
+            this.FireplaceGroup.Location = new System.Drawing.Point(5, 110);
+            this.FireplaceGroup.Name = "FireplaceGroup";
+            this.FireplaceGroup.Size = new System.Drawing.Size(779, 122);
+            this.FireplaceGroup.TabIndex = 14;
+            this.FireplaceGroup.TabStop = false;
+            this.FireplaceGroup.Text = "Fireplace Control";
+            // 
+            // FireOutdoorMin
+            // 
+            this.FireOutdoorMin.Location = new System.Drawing.Point(347, 48);
+            this.FireOutdoorMin.Maximum = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.FireOutdoorMin.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            -2147483648});
+            this.FireOutdoorMin.Name = "FireOutdoorMin";
+            this.FireOutdoorMin.Size = new System.Drawing.Size(46, 20);
+            this.FireOutdoorMin.TabIndex = 24;
+            this.FireOutdoorMin.Value = new decimal(new int[] {
+            35,
+            0,
+            0,
+            0});
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(155, 51);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(178, 13);
+            this.label20.TabIndex = 23;
+            this.label20.Text = "Outdoor temperature must be below:";
+            // 
+            // FireHysteresis
+            // 
+            this.FireHysteresis.Location = new System.Drawing.Point(591, 20);
+            this.FireHysteresis.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.FireHysteresis.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.FireHysteresis.Name = "FireHysteresis";
+            this.FireHysteresis.Size = new System.Drawing.Size(46, 20);
+            this.FireHysteresis.TabIndex = 21;
+            this.FireHysteresis.Value = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(399, 23);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(186, 13);
+            this.label19.TabIndex = 20;
+            this.label19.Text = "and turns OFF when temperature rises";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(399, 53);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(200, 13);
+            this.label18.TabIndex = 19;
+            this.label18.Text = "Fire Control Outdoor Temperature Sensor";
+            // 
+            // FireDesiredMin
+            // 
+            this.FireDesiredMin.Location = new System.Drawing.Point(347, 20);
+            this.FireDesiredMin.Maximum = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
+            this.FireDesiredMin.Name = "FireDesiredMin";
+            this.FireDesiredMin.Size = new System.Drawing.Size(46, 20);
+            this.FireDesiredMin.TabIndex = 17;
+            this.FireDesiredMin.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(155, 23);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(186, 13);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "Fire engages at indoor temperature of:";
+            // 
+            // FireplaceFan
+            // 
+            this.FireplaceFan.AutoSize = true;
+            this.FireplaceFan.Location = new System.Drawing.Point(19, 47);
+            this.FireplaceFan.Name = "FireplaceFan";
+            this.FireplaceFan.Size = new System.Drawing.Size(90, 17);
+            this.FireplaceFan.TabIndex = 14;
+            this.FireplaceFan.Text = "Fireplace Fan";
+            this.FireplaceFan.UseVisualStyleBackColor = true;
+            // 
+            // Fireplace
+            // 
+            this.Fireplace.AutoSize = true;
+            this.Fireplace.Location = new System.Drawing.Point(19, 19);
+            this.Fireplace.Name = "Fireplace";
+            this.Fireplace.Size = new System.Drawing.Size(69, 17);
+            this.Fireplace.TabIndex = 0;
+            this.Fireplace.Text = "Fireplace";
+            this.Fireplace.UseVisualStyleBackColor = true;
+            this.Fireplace.CheckedChanged += new System.EventHandler(this.Fireplace_checkedchanged);
+            // 
+            // FireplaceFanCheckbox
+            // 
+            this.FireplaceFanCheckbox.AutoSize = true;
+            this.FireplaceFanCheckbox.Location = new System.Drawing.Point(643, 23);
+            this.FireplaceFanCheckbox.Name = "FireplaceFanCheckbox";
+            this.FireplaceFanCheckbox.Size = new System.Drawing.Size(84, 17);
+            this.FireplaceFanCheckbox.TabIndex = 25;
+            this.FireplaceFanCheckbox.Text = "Also use fan";
+            this.FireplaceFanCheckbox.UseVisualStyleBackColor = true;
+            // 
             // TStat
             // 
             this.AcceptButton = this.RefreshButton;
@@ -1000,18 +1354,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.ClientSize = new System.Drawing.Size(872, 526);
+            this.ClientSize = new System.Drawing.Size(804, 521);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.UpdateLabel);
-            this.Controls.Add(this.BarnGroup);
             this.Controls.Add(this.Reload);
             this.Controls.Add(this.SaveSet);
-            this.Controls.Add(this.Sprinkler);
             this.Controls.Add(this.RefreshButton);
-            this.Controls.Add(this.StatusGp);
             this.Controls.Add(this.HideButton);
-            this.Controls.Add(this.ActCondGroup);
-            this.Controls.Add(this.DesiredConditionsGp);
             this.Controls.Add(this.menuStrip1);
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1032,14 +1381,25 @@
             this.ActCondGroup.PerformLayout();
             this.StatusGp.ResumeLayout(false);
             this.StatusGp.PerformLayout();
-            this.Sprinkler.ResumeLayout(false);
-            this.Sprinkler.PerformLayout();
             this.BarnGroup.ResumeLayout(false);
             this.BarnGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BarnDesMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BarnDesMax)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.Conditions.ResumeLayout(false);
+            this.Conditions.PerformLayout();
+            this.HVAC.ResumeLayout(false);
+            this.irrigation.ResumeLayout(false);
+            this.Sprinkler.ResumeLayout(false);
+            this.Sprinkler.PerformLayout();
+            this.Other.ResumeLayout(false);
+            this.FireplaceGroup.ResumeLayout(false);
+            this.FireplaceGroup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FireOutdoorMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FireHysteresis)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FireDesiredMin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1067,12 +1427,6 @@
         private System.Windows.Forms.CheckBox UseAppTemp;
         private System.Windows.Forms.CheckBox MixFan;
         private System.Windows.Forms.CheckBox Heat;
-        private System.Windows.Forms.GroupBox Sprinkler;
-        private System.Windows.Forms.CheckBox SprinklersBox;
-        private System.Windows.Forms.Label SprinklerAddressLabel;
-        private System.Windows.Forms.TextBox SprinklerAddress;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox RainThresh;
         private System.Windows.Forms.TextBox FanAddress;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox CoolAddress;
@@ -1084,7 +1438,6 @@
         private System.Windows.Forms.Label AveHumLabel;
         private System.Windows.Forms.Button SaveSet;
         private System.Windows.Forms.Button Reload;
-        private System.Windows.Forms.Label Rain24Label;
         private System.Windows.Forms.GroupBox BarnGroup;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown BarnDesMax;
@@ -1123,5 +1476,38 @@
         private System.Windows.Forms.ToolStripMenuItem resetMiinMaxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem celciusToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fehrenheitToolStripMenuItem;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage Conditions;
+        private System.Windows.Forms.TabPage HVAC;
+        private System.Windows.Forms.TabPage Other;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.CheckBox EMHeat;
+        private System.Windows.Forms.TextBox Cool2Address;
+        private System.Windows.Forms.CheckBox Cool2;
+        private System.Windows.Forms.TextBox Heat2Address;
+        private System.Windows.Forms.CheckBox Heat2;
+        private System.Windows.Forms.TabPage irrigation;
+        private System.Windows.Forms.GroupBox Sprinkler;
+        private System.Windows.Forms.Label Rain24Label;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox RainThresh;
+        private System.Windows.Forms.Label SprinklerAddressLabel;
+        private System.Windows.Forms.TextBox SprinklerAddress;
+        private System.Windows.Forms.CheckBox SprinklersBox;
+        private System.Windows.Forms.GroupBox FireplaceGroup;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox FireSensor;
+        private System.Windows.Forms.NumericUpDown FireDesiredMin;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox FireplaceFanAddress;
+        private System.Windows.Forms.CheckBox FireplaceFan;
+        private System.Windows.Forms.TextBox FireplaceAddress;
+        private System.Windows.Forms.CheckBox Fireplace;
+        private System.Windows.Forms.NumericUpDown FireOutdoorMin;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox FireCommandOnce;
+        private System.Windows.Forms.NumericUpDown FireHysteresis;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox FireplaceFanCheckbox;
     }
 }

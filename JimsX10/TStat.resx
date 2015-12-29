@@ -120,14 +120,20 @@
   <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="DesHumidity.HelpString" xml:space="preserve">
     <value>This sets the desired minimum himidity for the building.  When the humidity drops below this value, the humidifier X10 devices turns ON.  Note: This temperature will get automatically adjusted lower when the outside temperature gets too low.  This is done to prevent excessive condensations which can lead to mold.</value>
   </data>
   <data name="MaxSplit.HelpString" xml:space="preserve">
     <value>This is the maximum temperature difference between indoor temperatures before the mixer fan X10 cdevice engages.  A mixer fan is used to mix the air between rooms and floors in the building to bring the temperatures closer together.</value>
+  </data>
+  <data name="textBox1.HelpString" xml:space="preserve">
+    <value>This is the address for the X10 device to turn ON when the Heating ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
+  </data>
+  <data name="Cool2Address.HelpString" xml:space="preserve">
+    <value>This is the address for the X10 device to turn ON when the cooling ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
+  </data>
+  <data name="Heat2Address.HelpString" xml:space="preserve">
+    <value>This is the address for the X10 device to turn ON when the Heating ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
   </data>
   <data name="FreshAdd.HelpString" xml:space="preserve">
     <value>This is the address for the X10 device to turn ON when the Fresh Air ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
@@ -144,17 +150,23 @@
   <data name="FanAddress.HelpString" xml:space="preserve">
     <value>This is the address for the X10 device to turns ON when the Mix Fan ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
   </data>
+  <data name="BarnHeatAdd.HelpString" xml:space="preserve">
+    <value>This is the address for the X10 device to turn ON when the barn heating ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
+  </data>
+  <data name="BarnCoolAdd.HelpString" xml:space="preserve">
+    <value>This is the address for the X10 device to turn ON when the barn cooling ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
+  </data>
   <data name="RainThresh.HelpString" xml:space="preserve">
     <value>This threhold s used to desable the sprinbklers when the rain level in the last 24 hours exceeds this amount.  Id this is set to 0 the sprinklers are always disabled.  Tis does not directly control the sprinklers but rather enables/disables them.</value>
   </data>
   <data name="SprinklerAddress.HelpString" xml:space="preserve">
     <value>This is the address for the X10 device to turn ON when the Sprinklers Enabled box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
   </data>
-  <data name="BarnHeatAdd.HelpString" xml:space="preserve">
+  <data name="FireplaceAddress.HelpString" xml:space="preserve">
     <value>This is the address for the X10 device to turn ON when the barn heating ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
   </data>
-  <data name="BarnCoolAdd.HelpString" xml:space="preserve">
-    <value>This is the address for the X10 device to turn ON when the barn cooling ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
+  <data name="FireplaceFanAddress.HelpString" xml:space="preserve">
+    <value>This is the address for the X10 device to turn ON when the barn heating ON box is checked.  The box is automatically checked/unchecked by this software based on desired and actual conditions.  If this address is left blank, no X10 device is used for this feature (so nothing will happen).  X10 addresses are  in the format of a letter (a-f) and a number 1-16.  This software only controls PLC addresses.  </value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>144, 17</value>

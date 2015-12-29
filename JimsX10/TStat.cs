@@ -70,10 +70,12 @@ namespace JimsX10
         public WxUnits mWxDataUnits;
         public WxUnits mWxDisplayUnits;
         public double Rain24; // rain in the last 24 hours.  Used to control sprinkler override.
+        public double AveIndoorTempValue; // keep the average of the checked temp boxes
         
 
         DateTime last_run = new DateTime(); // used for compressor timer
         int BarnSensorNum = 1; // assume the barn uses outside temp for now.  Sensor can be selected later.
+        int FireSensorNum = 1; //same as above
         public int errorcount = 0;
         int ERRORMAX = 3;
         WsdlClient mClient;     // receives data from the server
@@ -207,6 +209,7 @@ namespace JimsX10
                 sensorWC[i].Width = 50;
 
                 BarnSensor.Items.Add(sensorName[i].Text); // add this sensor to the barn control selection
+                FireSensor.Items.Add(sensorName[i].Text); // add this sensor to the fireplace contorl
                 
             }
                 load_settings();
@@ -240,6 +243,15 @@ namespace JimsX10
             FreshAdd.Text = Properties.Settings.Default.TStatFreshAdd;
             MaxInDP.Value = Properties.Settings.Default.TStatMaxDP;
             AutoHumidity.Checked = Properties.Settings.Default.AutoDesHumidity;
+            FireSensorNum = Properties.Settings.Default.FireSensor;
+            FireSensor.SelectedIndex = FireSensorNum;
+            FireCommandOnce.Checked = Properties.Settings.Default.FireSendCommandOnce;
+            FireplaceAddress.Text = Properties.Settings.Default.FireplaceAdd;
+            FireplaceFanAddress.Text = Properties.Settings.Default.FireplaceFanAdd;
+            FireOutdoorMin.Value = Properties.Settings.Default.FireOutdoorMin;
+            FireDesiredMin.Value = Properties.Settings.Default.FireDesiredMin;
+            FireHysteresis.Value = Properties.Settings.Default.FireHysteresis;
+            FireplaceFanCheckbox.Checked = Properties.Settings.Default.UseFireFan;
             for(int i = 0;i<10 ; i++)
             {
                 bool chk = Convert.ToBoolean( Properties.Settings.Default.CheckBoxes[i]);
@@ -256,6 +268,8 @@ namespace JimsX10
             BarnHeat.Checked = X10check(BarnHeat.Checked, BarnHeatAdd.Text);
             BarnCool.Checked = X10check(BarnCool.Checked, BarnCoolAdd.Text);
             FreshAirFan.Checked = X10check(FreshAirFan.Checked, FreshAdd.Text);
+            
+            
 
         }
 
@@ -280,9 +294,17 @@ namespace JimsX10
             Properties.Settings.Default.TStatBarnCoolAdd = BarnCoolAdd.Text;
             Properties.Settings.Default.TStatBarnHeatAdd = BarnHeatAdd.Text;
             Properties.Settings.Default.TStatBarnSensor = BarnSensorNum;
+            Properties.Settings.Default.FireSensor = FireSensorNum;
             Properties.Settings.Default.TStatFreshAdd = FreshAdd.Text;
             Properties.Settings.Default.TStatMaxDP = MaxInDP.Value;
             Properties.Settings.Default.AutoDesHumidity = AutoHumidity.Checked;
+            Properties.Settings.Default.FireSendCommandOnce = FireCommandOnce.Checked;
+            Properties.Settings.Default.FireplaceAdd = FireplaceAddress.Text;
+            Properties.Settings.Default.FireplaceFanAdd = FireplaceFanAddress.Text;
+            Properties.Settings.Default.FireOutdoorMin = FireDesiredMin.Value;
+            Properties.Settings.Default.FireDesiredMin = FireDesiredMin.Value;
+            Properties.Settings.Default.FireHysteresis = FireHysteresis.Value;
+            Properties.Settings.Default.UseFireFan = FireplaceFanCheckbox.Checked;
             for (int i = 0; i < 10; i++)
             {
                 Properties.Settings.Default.CheckBoxes[i] = Convert.ToString(sensorName[i].Checked);
@@ -340,14 +362,14 @@ namespace JimsX10
             else ok = false;
 
  
-            // calculate the apparent temps and update the display
+            // calculate the apparent temps, wind chill, and heat index and update the display
             for (int i = 0; i < Properties.Settings.Default.TempSensorCount; ++i)
             {
                 sensorAT[i].Text = WxTemperatureUnit.DspString(sensorATnum[i], TemperatureUnit.degC, mWxDisplayUnits.Temperature) + u;
                 sensorHI[i].Text = WxTemperatureUnit.DspString(sensorHInum[i], TemperatureUnit.degF, mWxDisplayUnits.Temperature) + u;
                 sensorWC[i].Text = WxTemperatureUnit.DspString(sensorWCnum[i], TemperatureUnit.degF, mWxDisplayUnits.Temperature) + u;               
             }
-            AveIndoorTemp(); // just update the ave temp.  May dump this later if I don't need it.
+            AveIndoorTempValue = AveIndoorTemp(); // just update the ave temp.  May dump this later if I don't need it.
             
             // now update the outputs
             // Note:  The reason these are all if..else if... is for hysteresis to prevent excessive toggling
@@ -428,22 +450,36 @@ namespace JimsX10
             UpdateLabel.Text = "Updated: " + DateTime.Now.ToLongTimeString();
 
             // take care of the barn now
-            if (sensorRHNum[BarnSensorNum] < 1) return; // do not change the barn until the barn sensor is reading
-            double BarnTemp;
-            if(BarnUseAppTemp.Checked)
-                BarnTemp = WxTemperatureUnit.Convert(sensorATnum[BarnSensorNum], mWxDataUnits.Temperature, mWxDisplayUnits.Temperature);
-            else
-                BarnTemp = WxTemperatureUnit.Convert(sensorTempNum[BarnSensorNum], mWxDataUnits.Temperature, mWxDisplayUnits.Temperature);
+            if (sensorRHNum[BarnSensorNum] > 0)
+            {
+                double BarnTemp;
+                if (BarnUseAppTemp.Checked)
+                    BarnTemp = WxTemperatureUnit.Convert(sensorATnum[BarnSensorNum], mWxDataUnits.Temperature, mWxDisplayUnits.Temperature);
+                else
+                    BarnTemp = WxTemperatureUnit.Convert(sensorTempNum[BarnSensorNum], mWxDataUnits.Temperature, mWxDisplayUnits.Temperature);
 
-            if (BarnTemp > Convert.ToDouble(BarnDesMax.Value))
-                BarnCool.Checked = true;
-            else if (BarnTemp+2.0 < Convert.ToDouble(BarnDesMax.Value))
-                BarnCool.Checked = false;
+                if (BarnTemp > Convert.ToDouble(BarnDesMax.Value))
+                    BarnCool.Checked = true;
+                else if (BarnTemp + 2.0 < Convert.ToDouble(BarnDesMax.Value))
+                    BarnCool.Checked = false;
 
-            if (BarnTemp < Convert.ToDouble(BarnDesMin.Value))
-                BarnHeat.Checked = true;
-            else if (BarnTemp-1.0 > Convert.ToDouble(BarnDesMin.Value))
-                BarnHeat.Checked = false;
+                if (BarnTemp < Convert.ToDouble(BarnDesMin.Value))
+                    BarnHeat.Checked = true;
+                else if (BarnTemp - 1.0 > Convert.ToDouble(BarnDesMin.Value))
+                    BarnHeat.Checked = false;
+            }
+
+            //Take care of the fireplace
+            if (sensorRHNum[FireSensorNum] > 0)
+            {
+                double outsideTemp = WxTemperatureUnit.Convert(sensorTempNum[FireSensorNum], mWxDataUnits.Temperature, mWxDisplayUnits.Temperature);
+                if (outsideTemp < Convert.ToDouble(FireOutdoorMin.Value))
+                {
+                    if (AveIndoorTempValue < Convert.ToDouble(FireDesiredMin.Value))
+                        Fireplace.Checked = true;
+                }
+            }
+
         }
 
         private double AveIndoorTemp()
@@ -832,6 +868,51 @@ namespace JimsX10
             }
         }
 
+        private void Fireplace_checkedchanged(object sender, EventArgs e) // used to run the fireplace
+        {
+            if (Fireplace.Checked) // Control the fireplace and fan.
+            {
+                if (X10ON(true, FireplaceAddress.Text))
+                {
+                    Fireplace.Checked = true;
+                    AppendToFile("Fireplace ON, " + FireplaceAddress.Text + ",1");
+                    if (FireplaceFanCheckbox.Checked && X10Address(FireplaceFanAddress.Text) )
+                    {
+                        if(X10ON(true, FireplaceFanAddress.Text))
+                        {
+                            FireplaceFan.Checked = true;
+                        }
+                    }
+                }
+                else
+                {
+                    FireplaceAddress.Text = "";
+                    AppendToFile("Fireplace ON Failed");
+                }
+            }
+            else
+            {
+                if (X10ON(false, FireplaceAddress.Text))
+                {
+                    Fireplace.Checked = false;
+                    AppendToFile("Fireplace OFF, " + FireplaceAddress.Text + ",0");
+                    if (FireplaceFanCheckbox.Checked && X10Address(FireplaceFanAddress.Text))
+                    {
+                        if (X10ON(false, FireplaceFanAddress.Text)) // should put a timer here to run fan for some time after fire
+                        {
+                            FireplaceFan.Checked = false;
+                        }
+                    }
+                }
+                else
+                {
+                    FireplaceAddress.Text = "";
+                    AppendToFile("Fireplace OFF Failed");
+                }
+            }
+        }
+
+
         private bool X10ON(bool ON, string address)
         {
             ActiveHomeScriptLib.ActiveHomeClass act = new ActiveHomeScriptLib.ActiveHomeClass();
@@ -941,18 +1022,18 @@ namespace JimsX10
         /// Although this function looks for temperature readings, you can 
         /// grab any weather data of interest...barometer, wind, rain...whatever.
         /// 
-        /// This function uses X10 switches sensorTimeoutLimit control fans but you can delete that
-        /// code and do anything else you want sensorTimeoutLimit such as play sounds, dial phone
+        /// This function uses X10 switches to control fans but you can delete that
+        /// code and do anything else you want to such as play sounds, dial phone
         /// numbers, send e-mails, start programs, etc. The only problem is -- you 
-        /// have sensorTimeoutLimit figure out how! Good Luck, and please feel free sensorTimeoutLimit post your 
-        /// examples on the WSDL SourceForge forums for others sensorTimeoutLimit see.
+        /// have to figure out how! Good Luck, and please feel free to post your 
+        /// examples on the WSDL SourceForge forums for others to see.
         /// </summary>
         /// <param name="source"></param>
         /// <param name="evargs"></param>
         public void Process(object source, EventArgs evargs)
         {
             //
-            // A timout value of 10 minutes is used sensorTimeoutLimit determine if contact
+            // A timout value of 10 minutes is used to determine if contact
             // has been lost with the wireless sensors.
             //
             TimeSpan sensorTimeoutLimit = new TimeSpan(0, 10, 0);
@@ -1182,6 +1263,7 @@ namespace JimsX10
             }
         }
 
+ 
         
     }
 }
