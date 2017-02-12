@@ -11,7 +11,9 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup>
-    <ReferencePath>
-    </ReferencePath>
+    <ReferencePath>K:\github\JimsX10\;C:\Program Files (x86)\Weather\Weather Station Data Logger\;K:\github\JimsX10\WSDL-Custom-Client-Demo\WSDL-Custom-Client-Demo-2.2.0.0\WSDL-Client\;K:\github\JimsX10\WSDL-Custom-Client-Demo\WSDL-Custom-Client-Demo-2.2.0.0\WSDL-Client\bin\Debug\</ReferencePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
   </PropertyGroup>
 </Project>

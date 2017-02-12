@@ -1,0 +1,42 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WsdlPlugInDemo.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="InsideChannel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="OutsideChannel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="AcChannel" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">13</Value>
+    </Setting>
+    <Setting Name="Hysterisis" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0.5</Value>
+    </Setting>
+    <Setting Name="CoolingThreshold" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="InsideSetpoint" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">64</Value>
+    </Setting>
+    <Setting Name="AcSetpoint" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">70</Value>
+    </Setting>
+    <Setting Name="FanDisablesAc" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="X10WindowFan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">j,11</Value>
+    </Setting>
+    <Setting Name="X10MixingFan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">j,12</Value>
+    </Setting>
+    <Setting Name="X10Ac" Type="System.String" Scope="User">
+      <Value Profile="(Default)">j,16</Value>
+    </Setting>
+    <Setting Name="X10AcMixingFan" Type="System.String" Scope="User">
+      <Value Profile="(Default)">j,15</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -114,7 +114,7 @@ namespace JimsX10
             mJunkQ = new Queue();
 
             mClient = new WsdlClient(ClientServerComms.DefaultUdpPort,
-                ref mDataQ, ref mJunkQ, ref mJunkQ);
+                ref mDataQ, ref mJunkQ, ref mJunkQ, ref mJunkQ);
             //
             // start up a timer sensorTimeoutLimit call the Process() function every 10 seconds
             //
